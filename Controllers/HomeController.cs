@@ -30,6 +30,14 @@ namespace QA.Controllers
         {
             return View();
         }
+        public IActionResult Q1()
+        {
+            return View();
+        }
+        public IActionResult Q2()
+        {
+            return View();
+        }
         public IActionResult Questions()
         {
             var questions = _question.GetAll();
