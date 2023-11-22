@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+    body {
+        font-family: 'Scheherazade New', sans-serif; /* Apply the font to the entire body */
+    }
+
+    /* Styling for the form elements */
+    .login-form {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 70%;
+        margin: 10px auto;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        direction: rtl; /* Align text from right to left */
+    }
+
+    .btn-orange {
+        padding: 15px 30px;
+        font-size: 24px;
+        border-radius: 20px;
+        direction: rtl; /* Align text from right to left */
+    }
+
+    /* Styling for the bordered box around the heading */
+    .text-blue {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    /* Styling for image */
+    .img-container {
+        margin-bottom: 20px; /* Adjust spacing as needed */
+    }
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+
+<div class="container-fluid" style="height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <div class="login-form">
+                <!-- Image row -->
+                <div class="img-container">
+                    <img src="/img/logo.png" alt="Logo Image" class="img-fluid">
+                </div>
+                <!-- Heading row -->
+                <div class="text-blue" style="margin-bottom:-13px;">
+                    <h1>اطرح السؤال المطلوب</h1>
+                </div>
+                <!-- Textarea in bordered box -->
+                <textarea id="question" name="question" placeholder="اكتب سؤالك هنا..." class="form-control" rows="5"></textarea>
+                <!-- Button for submission -->
+                <button type="submit" class="btn btn-orange text-white" style="background-color:orange;">إرسال</button>
+            </div>
+        </div>
+    </div>
+</div>

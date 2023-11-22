@@ -1,0 +1,14 @@
+﻿@model List<Question>
+@{
+}
+<div class="container">
+    @foreach (var q in Model)
+    {
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">@q.Title</h2>
+                <p class="card-text">@q.Answer</p>
+            </div>
+        </div>
+    }
+</div>
