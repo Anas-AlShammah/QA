@@ -1,6 +1,12 @@
 ﻿
 
 <style>
+    .sub{
+        font-weight: 100;
+        color:black !important;
+        text-align:left;
+        border-top: 1px solid;
+    }
     body {
         font-family: 'Scheherazade New', sans-serif; /* Apply the font to the entire body */
     }
@@ -9,13 +15,18 @@
     .login-form {
         text-align: center;
     }
-
+    p{
+        font-weight: bold;
+        color: #536cb594;
+    }
     #question{
-       
-        width:70%;
+        padding: 2%;
+        margin: 0 auto;
+        border: 2px solid #536cb594;
+        width: 70%;
         text-align: center;
-        height: 10%;
-        border-radius: 120px;
+        height: 15%;
+        border-radius: 35px;
     }   .form-control {
         width: 70%;
         margin: 10px auto;
@@ -38,9 +49,9 @@
     .text-blue {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
-        color: white;
-        width:50%;
-        background-color: #536cb594 !important;
+        color: black;
+        width:60%;
+        
         padding: 2px;
         display: inline-block;
     }
@@ -69,14 +80,32 @@
 
                 <!-- Heading row -->
                 <div class="text-blue" style="margin-bottom:-10px;">
-                    <h5>اطرح السؤال المطلوب</h5>
+                    <h5>السؤال : ما هي جرعة فیتامین د الیومیة ؟</h5>
+                    <br />
                 </div>
+                
                 <!-- Textarea in bordered box -->
-                <textarea style=" overflow:hidden;
-        height:100px;" id="question" name="question" placeholder="اكتب سؤالك هنا..." class="form-control" rows="5"></textarea>
+                <div id="question">
+                    <p>
+                        عظم الناس تناول 100 میکروغرام والمساوي 4 آلاف وحدة دولیة یومیا یعتبر ً آمنا. ويفبضعة
+                        أشخاص، تناول الکثیر من حبوب فیتامین د، خلال فترة طویلة من الزمن قد یسبب تراکم
+                        .الکالسیوميفالجسیم (فرط کالسیوم الدم
+                    </p>
+                </div>
+                <br />
+                <div style="width:40%; margin:0 auto;"  >
+                    <h5>مواضيع متعلقة</h5>
+                </div>
+                <div class="text-blue" style="margin-bottom:-10px; width:40% !important;">
+                    <p class="sub">جرعة فيتامين د اليومية كم نقطة؟</p>
+                    <p class="sub">افيتامين د 5000 كم مرة باليوم؟</p>
+                    <p class="sub">هل جرعة فيتامين د 50000 امنه؟</p>
+
+                    
+                </div>
                 <br />
                 <!-- Button for submission -->
-                <button type="submit" class="btn btn-orange text-white" style="background-color:orange;">إرسال</button>
+               
             </div>
         </div>
     </div>
