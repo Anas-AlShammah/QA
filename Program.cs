@@ -21,6 +21,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
    .AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.AddScoped<IQuestion,QuestionService>();
+builder.Services.AddScoped<IUserService, IdentityUserService>();
+
 
 builder.Services.AddAuthorization(options =>
 {
@@ -44,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

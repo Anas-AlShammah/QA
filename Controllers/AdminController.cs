@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace QA.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
     }
 }

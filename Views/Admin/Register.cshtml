@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form  asp-controller="User" asp-action="Register" method="post"  >
+   
+    <div class="wrap-input">
+        <input  type="text" name="Username" placeholder="UserName" required>
+     @*   <span asp-validation-for="Username" class="focus-input"></span>*@
+      
+    </div>
+    <div class="wrap-input">
+        <input type="password" class="input" name="Password" placeholder="Password" required>
+        
+
+
+    </div>
+    <div class="wrap-input">
+        <input  class="input" placeholder="Email" type="text" name="Email" required>
+    
+    </div>
+    <div class="wrap-input">
+        <input  placeholder="Phone Num." type="text" name="PhoneNumber" required>
+       
+
+
+    </div>
+   
+    
+    <div class="login-form-btn-container">
+        <button type="submit" class="login-form-btn">Sign Up</button>
+    </div>
+
+  
+
+</form>
