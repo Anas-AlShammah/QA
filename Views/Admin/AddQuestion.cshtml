@@ -3,16 +3,87 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+
+
+<link href="~/css/adminFormStyle.css" rel="stylesheet">
+
+
+<section class="logRegForm">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-10">
+                <div class="contact_form_wrappre2">
+                    <h2>
+                        اضافة سؤال
+
+                    </h2>
+                    <form asp-controller="Admin" asp-action="AddQuestion" method="Post" style="font-family:Scheherazade New; direction:rtl; ">
+                        <div class="inputArea">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="ادخل السؤال">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" >
+                                                <i class="fas fa-question-circle"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="الاجابة" name="Answer"></textarea>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-comment"></i>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="كلمات مفتاحية">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <button class="loginnow" type="submit">اضافة</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*
 <h1 style="font-family:Scheherazade New;  ">إضافة سؤال</h1>
 <form asp-controller="Admin" asp-action="AddQuestion" method="Post">
     <fieldset >
-        @* <legend>Legend</legend>*@
+        @* <legend>Legend</legend>
 
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label mt-4">السؤال</label>
             <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="ادخل السؤال">
             @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            *@
+            
         </div>
 
 
@@ -24,7 +95,7 @@
             <label for="exampleInputEmail" class="form-label mt-4">كلمات مفتاحية</label>
             <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="كلمات مفتاحية">
             @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            *@
+            
         </div>
 
 
@@ -33,4 +104,4 @@
 
         <button type="submit" class="btn btn-primary">إضافة</button>
     </fieldset>
-</form>
+</form>*@

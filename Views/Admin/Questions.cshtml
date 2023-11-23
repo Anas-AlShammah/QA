@@ -3,19 +3,113 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <style>
+    body{
+        font-family: 'Scheherazade New', sans-serif;
+    }
+    :root {
+        --primary: #9fde50;
+  --secondary: #ff5252;
+  --background: #eee;
+  --highlight: #ffda79;
+  /* Theme color */
+  --theme: var(--primary);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Core styles/functionality */
+.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tab__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s;
+}
+.tab input:checked ~ .tab__content {
+  max-height: 10rem;
+}
+
+/* Visual styles */
+
+.tab__label,
+.tab__close {
+  display: flex;
+  color: white;
+  background: var(--theme);
+  cursor: pointer;
+}
+.tab__label {
+  justify-content: space-between;
+  padding: 1rem;
+}
+.tab__label::after {
+  content: "\276F";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.35s;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+}
+.tab__content p {
+  margin: 0;
+  padding: 1rem;
+}
+.tab__close {
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+.accordion--radio {
+  --theme: var(--secondary);
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  animation: bounce .5s infinite;
+}
+@@keyframes bounce {
+  25% {
+    transform: rotate(90deg) translate(.25rem);
+  }
+  75% {
+    transform: rotate(90deg) translate(-.25rem);
+  }
+}
+
     h1 {
         font-family: 'Lateef', system-ui, sans-serif; /* Apply the font to the entire body */
     }
 </style>
-<h1>جميع الاسئلة</h1>
-<div class="container">
+
+
+
+<h1 style="text-align:center;">جميع الاسئلة</h1>
+
+<div style="width:80%;" class="container">
     @foreach (var q in Model)
     {
-        <div class="card my-3">
-            <div class="card-body">
-                <h2 class="card-title" style=" font-family: 'Lateef', sans-serif;">@q.Title</h2>
-                <p class="card-text" style=" font-family: 'Lateef', sans-serif;">@q.Answer</p>
+        <section class="accordion">
+            <div class="tab">
+                <input type="checkbox" name="accordion-1" id="@q.Title" checked>
+
+                <label style="    font-size: 20px;" for="@q.Title" class="tab__label">
+                    <div>
+                        <i class="fas fa-question-circle"></i> @q.Title
+                    </div>
+                    </label>
+                <div class="tab__content">
+                    <p>@q.Answer</p>
+                </div>
             </div>
-        </div>
+
+        </section>
+     
     }
 </div>
