@@ -1,0 +1,100 @@
+﻿@model IEnumerable<UserDto>
+@{
+    ViewData["Title"] = "Get All Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+               
+
+                <th scope="col">User Name</th>
+
+                <th scope="col"> Delete </th>
+
+              
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                <tr class="@((i % 2 == 0) ? "table-dark" : "table-light")">
+                    
+                    <td>@Model.ElementAt(i).Username</td>
+
+
+
+                    <td>
+                        <button data-toggle="modal" data-target="#myModal-@Model.ElementAt(i).Id" class="btn btn-danger">Delete</button>
+
+                    </td>
+
+                 
+
+
+                </tr>
+
+
+                //Delete Model
+                <div class="modal fade" id="myModal-@Model.ElementAt(i).Id">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete User</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this User?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteUser" asp-route-userId="@Model.ElementAt(i).Id">Delete</a>
+
+                                <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                //Change Role Model
+
+
+                <div class="modal fade" id="myModal-@Model.ElementAt(i).Username">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Change Role</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to make this user an Admin?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-primary" asp-controller="Admin" asp-action="ChangeRole" asp-route-userId=@Model.ElementAt(i).Id>Change Role to admin</a>
+
+                                <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </tbody>
+    </table>
+
+</div>

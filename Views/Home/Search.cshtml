@@ -1,31 +1,40 @@
-﻿@model QuestionVM
-
-<style>
-    .sub{
-        font-weight: 100;
-        color:black !important;
-        text-align:left;
-        border-top: 1px solid;
+﻿@model List<Question>
+@{
+}
+@*<div class="container">
+    @foreach (var q in Model)
+    {
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">@q.Title</h2>
+                <p class="card-text">@q.Answer</p>
+            </div>
+        </div>
     }
-  
+</div>
+*@
+<style>
+
 
     /* Styling for the form elements */
     .login-form {
         text-align: center;
     }
-    p{
-        font-weight: bold;
-        color: #536cb594;
+
+    p {
+        margin-bottom: auto !important;
     }
-    #question{
+
+    #question {
+        border-bottom: 1px solid;
         padding: 2%;
         margin: 0 auto;
-        border: 2px solid #536cb594;
         width: 70%;
         text-align: center;
         height: 15%;
-        border-radius: 35px;
-    }   .form-control {
+    }
+
+    .form-control {
         width: 70%;
         margin: 10px auto;
         padding: 10px;
@@ -36,9 +45,9 @@
     }
 
     .btn-orange {
-        padding: 4px 36px 4px 36px!important;
+        padding: 4px 36px 4px 36px !important;
         font-size: 24px;
-        width:auto;
+        width: auto;
         border-radius: 8px !important;
         direction: rtl; /* Align text from right to left */
     }
@@ -48,8 +57,7 @@
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         color: black;
-        width:60%;
-        
+        width: 60%;
         padding: 2px;
         display: inline-block;
     }
@@ -64,47 +72,46 @@
 <br />
 
 <div class="container-fluid" style="height: 100vh;">
-    <div  style="height: 100vh;">
-        <div >
+    <div style="height: 100vh;">
+        <div>
             <div class="login-form">
                 <!-- Image row -->
                 <div class="img-container">
                     <img src="/img/logo.png" width="80" height="80" alt="Logo Image" class="img-fluid">
                 </div>
                 <br />
-      
-           
+
+
 
                 <!-- Heading row -->
                 <div class="text-blue" style="margin-bottom:-10px;">
-                    <h2 style=" font-family: 'Lateef', sans-serif;">السؤال : @Model.Question.Title ؟</h2>
+                    <h2 style=" font-family: 'Lateef', sans-serif;">السؤال : @ViewBag.question ؟</h2>
                     <br />
                 </div>
-                
-                <!-- Textarea in bordered box -->
-                <div id="question">
-                    <h3 style=" font-family: 'Lateef', sans-serif;">
-                        @Model.Question.Answer
-                    </h3>
-                </div>
-                <br />
-                <div style="width:40%; margin:0 auto;"  >
-                    <h2 style=" font-family: 'Lateef', sans-serif;">مواضيع متعلقة</h2>
-                </div>
-                <div class="text-blue" style="margin-bottom:-10px; width:40% !important;">
-                    @foreach(var q in Model.questions)
-                    {
-                        <p class="sub">@q.Title</p>
-                    }
-                   
-                   
 
-                    
+                <div @*style="max-height:400px; overflow-y:scroll;"*@>
+                     @foreach (var q in Model)
+                     {
+                    <div id="question">
+                            <a asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
+                        <h2 style="font-weight: bold;
+        color: #536cb594;font-family: 'Lateef', sans-serif;">@q.Title</h2>
+                                <h2 style="font-size: 30px;font-family: 'Lateef', sans-serif;">
+
+                           @q.Answer
+                        </h2>
+                        </a>
+                         </div>
+                    }
+
                 </div>
-                <br />
                 <!-- Button for submission -->
-               
+
             </div>
         </div>
     </div>
 </div>
+<br />
+<br />
+<br />
+<br />

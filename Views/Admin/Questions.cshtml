@@ -1,0 +1,21 @@
+﻿@model List<Question>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    h1 {
+        font-family: 'Lateef', system-ui, sans-serif; /* Apply the font to the entire body */
+    }
+</style>
+<h1>جميع الاسئلة</h1>
+<div class="container">
+    @foreach (var q in Model)
+    {
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title" style=" font-family: 'Lateef', sans-serif;">@q.Title</h2>
+                <p class="card-text" style=" font-family: 'Lateef', sans-serif;">@q.Answer</p>
+            </div>
+        </div>
+    }
+</div>

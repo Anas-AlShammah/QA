@@ -14,5 +14,7 @@ namespace QA.Interfaces
         public Task<bool> ChangePasswordAsync(string userId, string currentPassword, string newPassword);
         Task Logout();
         Task<IdentityResult> AssignRolesToUser(string userName);
+        Task<int> UserCount();
+        Task<List<UserDto>> GetAllUsers();
     }
 }

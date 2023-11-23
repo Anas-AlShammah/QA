@@ -2,32 +2,88 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form asp-controller="Home" asp-action="AddQuestion" method="Post">
-    <fieldset>
-       @* <legend>Legend</legend>*@
-      
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Question</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="Enter Question">
-@*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-*@        </div>
-        
-        
-        <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4">Answer</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" name="Answer"></textarea>
+<style>
+    body {
+        font-family: 'Lateef', system-ui, sans-serif; /* Apply the font to the entire body */
+    }
+
+    /* Styling for the form elements */
+    .login-form {
+        text-align: center;
+    }
+
+    #question {
+        width: 70%;
+        text-align: center;
+        height: 10%;
+        border-radius: 120px;
+    }
+
+    .form-control {
+        width: 70%;
+        margin: 10px auto;
+        padding: 10px;
+        font-size: 25px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        direction: rtl; /* Align text from right to left */
+    }
+
+    .btn-orange {
+        padding: 4px 36px 4px 36px !important;
+        font-size: 30px;
+        width: auto;
+        border-radius: 8px !important;
+        direction: rtl; /* Align text from right to left */
+    }
+
+    /* Styling for the bordered box around the heading */
+    .text-blue {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        color: white;
+        width: 50%;
+        background-color: #536cb594 !important;
+        padding: 2px;
+        display: inline-block;
+    }
+
+    /* Styling for image */
+    .img-container {
+        margin-bottom: 20px; /* Adjust spacing as needed */
+    }
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
+<br />
+<br />
+
+<div class="container-fluid" style="height: 100vh;">
+    <div style="height: 100vh;">
+        <div>
+            <div class="login-form">
+                <!-- Image row -->
+                <div class="img-container">
+                    <img src="/img/logo.png" width="80" height="80" alt="Logo Image" class="img-fluid">
+                </div>
+                <br />
+
+
+                <form method="get"  action="@Url.Action("Search", "Home")">
+                    
+               
+                <!-- Heading row -->
+                <div class="text-blue" style="margin-bottom:-10px;">
+                        <h3 style=" font-family: 'Lateef', sans-serif;">اطرح السؤال المطلوب</h3>
+                </div>
+               
+                <textarea style=" overflow:hidden;
+        height:100px;" id="question" name="str" placeholder="اكتب سؤالك هنا..." class="form-control" rows="5" tyle=" font-family: 'Lateef', sans-serif;"></textarea>
+                <br />
+                <!-- Button for submission -->
+                    <button type="submit" class="btn btn-orange text-white" style="background-color:orange; font-family: 'Lateef', sans-serif; font-size: 28px;">إرسال</button>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail" class="form-label mt-4">Key Words</label>
-            <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="Key Words">
-            @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            *@
-        </div>
-      
-       
-       
-       
-       
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
-</form>
+    </div>
+</div>

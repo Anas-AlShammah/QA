@@ -1,36 +1,43 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<form  asp-controller="User" asp-action="Register" method="post"  >
-   
-    <div class="wrap-input">
-        <input  type="text" name="Username" placeholder="UserName" required>
-     @*   <span asp-validation-for="Username" class="focus-input"></span>*@
-      
+
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center mb-4" style="font-family: 'Scheherazade New;', sans-serif;">إضافة حساب جديد</h2>
+
+            <form asp-controller="User" asp-action="Register" method="post" class="needs-validation" style="font-family:Scheherazade New;  direction: rtl;" novalidate autocomplete="off">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Username" placeholder="اسم المستخدم" required>
+                    <div class="invalid-feedback">
+                        Please provide a username.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="Password" placeholder="كلمة المرور" required>
+                    <div class="invalid-feedback">
+                        Please provide a password.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="Email" placeholder="الإيميل" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid email.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" name="PhoneNumber" placeholder="رقم الهاتف" style="font-family:Scheherazade New;  direction: rtl;" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid phone number.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">تسجيل</button>
+            </form>
+        </div>
     </div>
-    <div class="wrap-input">
-        <input type="password" class="input" name="Password" placeholder="Password" required>
-        
-
-
-    </div>
-    <div class="wrap-input">
-        <input  class="input" placeholder="Email" type="text" name="Email" required>
-    
-    </div>
-    <div class="wrap-input">
-        <input  placeholder="Phone Num." type="text" name="PhoneNumber" required>
-       
-
-
-    </div>
-   
-    
-    <div class="login-form-btn-container">
-        <button type="submit" class="login-form-btn">Sign Up</button>
-    </div>
-
-  
-
-</form>
+</div>

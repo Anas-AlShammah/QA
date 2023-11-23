@@ -30,17 +30,17 @@ namespace QA.Controllers
             {
                 return View(res);
             }
-            if (res == null)
-            {
-                return RedirectToAction("Login", "User");
+            //if (res == null)
+            //{
+            //    return RedirectToAction("Login", "User");
 
-            }
-            if (res.Roles[0] == "Admin")
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            //}
+            //if (res.Roles[0] == "Admin")
+            //{
+            //    return RedirectToAction("Index", "Admin");
+            //}
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
    
 

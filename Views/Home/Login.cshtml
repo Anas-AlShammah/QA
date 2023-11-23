@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
 
 <style>
     .login-form {
@@ -21,11 +22,12 @@
     }
     /* Adjustments for specific elements */
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Scheherazade New sans-serif; /* Apply the font to headings */
+        font-family: 'Scheherazade New', sans-serif; /* Apply the font to the entire body */
     }
 
     .form-control {
-        font-family: 'Scheherazade New', sans-serif; /* Apply the font to form elements */
+        font-family: 'Scheherazade New', sans-serif; /* Apply the font to the entire body */
+        /* Apply the font to form elements */
         direction: rtl;
     }
 
@@ -37,7 +39,7 @@
     }
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+
 
 <div class="container-fluid" style="background-color: rgba(69, 129, 224, 0.8); height: 100vh;">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
@@ -50,11 +52,13 @@
                     <br />
 
                     <h1 class="text-white">بنك الأسئلة</h1>
-                    <p style="color:white; width:70%; margin:0 auto;">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                        diam nonummy nibh euismod tincidunt ut
-                    </p>
+                    <br />
+                    <br />
+                    <h3 style="color:white; width:70%; margin:0 auto;">
+                       اهلا بصفحة فكر تاني للأسئلة هذه الصفحه مخصصة لفريق فكر  تاني 
+                    </h3>
                 </div>
+                <br />
                 <form asp-controller="User" asp-action="Login" method="post">
                     <div class="form-group">
                         <input type="text" id="username" name="username" placeholder="اسم المستخدم" class="form-control" style="width: 40%; margin: 0 auto;">
@@ -63,7 +67,7 @@
                         <input type="password" id="password" name="password" placeholder="كلمة المرور" class="form-control" style="width: 40%; margin: 0 auto;">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-orange text-white" style="border-radius: 12px; padding: 15px 30px;">دخول</button>
+                        <button type="submit" class="btn btn-orange text-white" style="border-radius: 12px; padding: 20px 30px;">دخول</button>
                     </div>
                 </form>
             </div>

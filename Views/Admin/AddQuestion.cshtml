@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+<h1 style="font-family:Scheherazade New;  ">إضافة سؤال</h1>
+<form asp-controller="Admin" asp-action="AddQuestion" method="Post">
+    <fieldset >
+        @* <legend>Legend</legend>*@
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">السؤال</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="ادخل السؤال">
+            @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            *@
+        </div>
+
+
+        <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">الإجابة</label>
+            <textarea class="form-control" id="exampleTextarea" rows="3" name="Answer"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail" class="form-label mt-4">كلمات مفتاحية</label>
+            <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="كلمات مفتاحية">
+            @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            *@
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">إضافة</button>
+    </fieldset>
+</form>

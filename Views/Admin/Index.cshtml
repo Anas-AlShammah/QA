@@ -1,6 +1,133 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ChartVM
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card text-white bg-primary mb-3 mt-5 carda" style="max-width: 20rem;">
+                <div class="card-header"><i class="fas fa-tasks"></i></div>
+                <div class="card-body">
+                    <h4 class="card-title">Total Questions : @Model.NumberOfQuestion</h4>
+                </div>
+            </div>
+
+            <div class="card text-white bg-success mb-3 carda" style="max-width: 20rem;">
+                <div class="card-header"><i class="fas fa-check-square"></i></div>
+                <div class="card-body">
+                    <h4 class="card-title">Total Users : @Model.NumberOfUser</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+    .chart-container {
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    canvas#myChart {
+        width: 100%;
+        height: auto;
+    }
+
+    .carda {
+        animation: fadeInUp 0.5s ease;
+    }
+
+
+
+    keyframes fadeInUp {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }</style>
+
+
+
+<script>
+    const data = {
+        labels: [
+            'Questions',
+            'Users',
+
+        ],
+        datasets: [{
+            label: 'you have',
+            data: [@Model.NumberOfQuestion, @Model.NumberOfUser],
+            backgroundColor: [
+                'rgb(243, 170, 96)',
+                'rgb(29, 91, 121)'
+                //'rgb(239, 98, 98)',
+
+                //'rgb(70, 139, 151)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+            const { ctx } = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = options.color || 'null';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+        }
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                customCanvasBackgroundColor: {
+                    color: 'white',
+                },
+                legend: {
+                    display: true, // Display the legend
+                    position: 'top', // Position it at the bottom
+                },
+            }
+        },
+        plugins: [plugin],
+    };
+
+    const myChart = new Chart(ctx, config);
+</script>
+
+
+
+
+

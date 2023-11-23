@@ -84,14 +84,14 @@ namespace QA.Services
 
 
 
-                await userManager.AddToRolesAsync(user, data.Roles);
+                //await userManager.AddToRolesAsync(user, data.Roles);
                
                 var userDTO = new UserDto
                 {
                     Id = user.Id,
                     Username = user.UserName,
 
-                    Roles = await userManager.GetRolesAsync(user)
+                    //Roles = await userManager.GetRolesAsync(user)
 
                 };
 
@@ -113,6 +113,36 @@ namespace QA.Services
 
         }
 
+        public async Task<int> UserCount()
+        {
+            var userCount = await GetAllUsers();
+            return userCount.Count;
+        }
+        public async Task<List<UserDto>> GetAllUsers()
+        {
+         
+
+
+            var users = await userManager.Users.ToListAsync();
+
+            var usersToReturn = users.Where(u =>
+            !userManager.IsInRoleAsync(u, "Admin").Result)
+
+
+            .Select(u => new UserDto
+            {
+
+                Id = u.Id,
+                Username = u.UserName,
+
+            }).ToList();
+
+
+            return usersToReturn;
+
+
+
+        }
 
     }
 }
