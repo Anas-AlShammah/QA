@@ -1,77 +1,59 @@
 ﻿@model List<Question>
 @{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
-@*<div class="container">
-    @foreach (var q in Model)
-    {
-        <div class="card my-3">
-            <div class="card-body">
-                <h2 class="card-title">@q.Title</h2>
-                <p class="card-text">@q.Answer</p>
-            </div>
-        </div>
-    }
-</div>
-*@
-<style>
 
 
-    /* Styling for the form elements */
-    .login-form {
-        text-align: center;
-    }
-
-    p {
-        margin-bottom: auto !important;
-    }
-
-    #question {
-        border-bottom: 1px solid;
-        padding: 2%;
-        margin: 0 auto;
-        width: 70%;
-        text-align: center;
-        height: 15%;
-    }
-
-    .form-control {
-        width: 70%;
-        margin: 10px auto;
-        padding: 10px;
-        font-size: 18px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    .btn-orange {
-        padding: 4px 36px 4px 36px !important;
-        font-size: 24px;
-        width: auto;
-        border-radius: 8px !important;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    /* Styling for the bordered box around the heading */
-    .text-blue {
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        color: black;
-        width: 60%;
-        padding: 2px;
-        display: inline-block;
-    }
-
-    /* Styling for image */
-    .img-container {
-        margin-bottom: 20px; /* Adjust spacing as needed */
-    }
-</style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <br />
 <br />
 
-<div class="container-fluid" style="height: 100vh;">
+<section class="faq-section section-padding" id="section_4">
+    <div class="container">
+        <div class="row">
+
+           
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-5 col-12">
+                <img src="~/WebsiteStyle/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+            </div>
+
+            <div class="col-lg-6 col-12 m-auto">
+                <h2 style="text-align:center" >السؤال : @ViewBag.question ؟</h2>
+                <div class="accordion" id="accordionExample">
+
+                    @foreach (var q in Model)
+                    {
+                        <div  class="accordion-item">
+                            <a style="display:block !important;" asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
+                                <h2 class="accordion-header" id="@q.Title">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    @q.Title
+                                </button>
+                            </h2>
+
+                                <div id="@q.Title" class="accordion-collapse collapse show" aria-labelledby="@q.Title" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                        @q.Answer
+                                    </div>
+                            </div>
+                            </a>
+                        </div>
+                    
+                    }
+
+
+                 
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+@*<div class="container-fluid" style="height: 100vh;">
     <div style="height: 100vh;">
         <div>
             <div class="login-form">
@@ -89,7 +71,7 @@
                     <br />
                 </div>
 
-                <div @*style="max-height:400px; overflow-y:scroll;"*@>
+                <div >
                      @foreach (var q in Model)
                      {
                     <div id="question">
@@ -114,4 +96,4 @@
 <br />
 <br />
 <br />
-<br />
+<br />*@
