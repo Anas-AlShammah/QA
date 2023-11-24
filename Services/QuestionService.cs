@@ -98,6 +98,33 @@ namespace QA.Services
             var number = _context.Question.Count();
             return number;
         }
+
+        public void AddAll(string text, int Category)
+        {
+            // Define the regular expression pattern to match question-answer pairs
+            string pattern = @"السؤال رقم\s*:\s*\d+\s*(.*?)\s*الإجابة\s*:\s*(.*?)\s*(?=السؤال رقم|$)";
+
+            // Use Regex to match question-answer pairs in the text
+            MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.Singleline);
+
+            foreach (Match match in matches)
+            {
+                string question = match.Groups[1].Value.Trim();
+                string answer = match.Groups[2].Value.Trim();
+
+                var question1 = new Question()
+                    {
+                        Title = question,
+                        Answer = answer,
+                        KeyWord = "test",
+                        CategoryId = Category
+                    };
+                    _context.Question.Add(question1);
+                    _context.SaveChanges();
+                }
+            }
+        }
+
     }
-  
-}
+
+

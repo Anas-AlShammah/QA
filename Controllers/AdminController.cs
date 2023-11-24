@@ -12,8 +12,10 @@ namespace QA.Controllers
       
         private readonly IQuestion _question;
         private readonly IUserService _userService;
-        public AdminController(IUserService userService, IQuestion question)
+        private readonly ICategory _category;
+        public AdminController(ICategory category,IUserService userService, IQuestion question)
         {
+            _category = category;
             _userService = userService;
              _question = question;
         }
@@ -33,13 +35,19 @@ namespace QA.Controllers
         }
         public IActionResult AddQuestion()
         {
-
-            return View();
+            var categiries = _category.GetAll();
+            return View(categiries);
         }
         [HttpPost]
         public IActionResult AddQuestion(QuestionDto questionDto)
         {
             _question.Add(questionDto);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult AddQuestions(string text,int Category)
+        {
+            _question.AddAll(text,Category);
             return RedirectToAction("Index");
         }
         public IActionResult Questions()

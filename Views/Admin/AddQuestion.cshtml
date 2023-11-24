@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Category>
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -6,7 +6,26 @@
 
 
 <link href="~/css/adminFormStyle.css" rel="stylesheet">
+@*<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@category.Name</h5>
+                    <!-- Add other category details or actions within the card -->
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<form asp-controller="Admin" asp-action="AddQuestions" method="Post" style="font-family:Scheherazade New; direction:rtl;">
 
+    <textarea name="text" type="text" />
+
+
+    <button class="loginnow" type="submit">اضافة</button>
+</form>*@
 
 <section class="logRegForm">
     <div class="container">
@@ -17,26 +36,29 @@
                         اضافة سؤال
 
                     </h2>
-                    <form asp-controller="Admin" asp-action="AddQuestion" method="Post" style="font-family:Scheherazade New; direction:rtl; ">
+                    <form asp-controller="Admin" asp-action="AddQuestions" method="Post" style="font-family:Scheherazade New; direction:rtl; ">
                         <div class="inputArea">
                             <div class="form-row">
                                 <div class="col">
                                     <div class="input-group">
-                                        
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="ادخل السؤال">
+                                        <select class="form-control" id="categorySelect" name="Category">
+                                            @foreach (var category in Model)
+                                            {
+                                                <option value="@category.Id">@category.Name</option>
+                                            }
+                                        </select>
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" >
-                                                <i class="fas fa-question-circle"></i>
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-comment"></i>
                                             </span>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <div class="input-group">
-                                        <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="الاجابة" name="Answer"></textarea>
+                                        <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="الأسئلة" name="text"></textarea>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="url">
                                                 <i class="fas fa-comment"></i>
@@ -46,18 +68,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="كلمات مفتاحية">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="url">
-                                                <i class="fas fa-key"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                          
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -73,35 +84,4 @@
 </section>
 
 
-@*
-<h1 style="font-family:Scheherazade New;  ">إضافة سؤال</h1>
-<form asp-controller="Admin" asp-action="AddQuestion" method="Post">
-    <fieldset >
-        @* <legend>Legend</legend>
-
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">السؤال</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="Title" placeholder="ادخل السؤال">
-            @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            
-        </div>
-
-
-        <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4">الإجابة</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" name="Answer"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail" class="form-label mt-4">كلمات مفتاحية</label>
-            <input type="text" class="form-control" id="exampleInputEmail" name="KeyWord" placeholder="كلمات مفتاحية">
-            @*            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            
-        </div>
-
-
-
-
-
-        <button type="submit" class="btn btn-primary">إضافة</button>
-    </fieldset>
-</form>*@
+  
