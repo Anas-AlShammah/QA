@@ -6,6 +6,7 @@ namespace QA.Interfaces
     public interface IQuestion
     {
         void Add(QuestionDto questionDto);
+        void AddAll(string text,int Category);
 
         List<Question> GetAll();
         List<Question> SearchAll(string question);

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QA.Data;
 
@@ -11,9 +12,11 @@ using QA.Data;
 namespace QA.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231124131116_cat")]
+    partial class cat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,16 +266,16 @@ namespace QA.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d2bc124-d787-4cd5-b87e-36857395ba39",
+                            ConcurrencyStamp = "b8ec4314-7d66-427e-9210-2a421931025c",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJN7cEpT1rbG45cGDDkLAjN5YXmJ4i1YpXPjVFdrHf+k0WWB6fv7FPyJgWIVsj3aOQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECORIcpYgv2BKxBRiqD0/3WGoVEZPOWuTz1xOyvafJW5+eMxBckIZLMF05B4Gea25A==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1068c1bb-1a0b-4677-8e00-59aa97c7ab1c",
+                            SecurityStamp = "6dab878e-2185-4c99-ab39-20f3d72dcff5",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -293,53 +296,6 @@ namespace QA.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "المعادن والفيتامينات"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "المكملات الغذائيه"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "الاعشاب"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "الجهاز الهضمي"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "الجهاز العصبي"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "أنظمة غذائية"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "أمراض النسائية"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "امراض الذكورة"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "الغدد"
-                        });
                 });
 
             modelBuilder.Entity("QA.Models.Question", b =>

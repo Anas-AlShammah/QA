@@ -22,7 +22,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 builder.Services.AddScoped<IQuestion,QuestionService>();
 builder.Services.AddScoped<IUserService, IdentityUserService>();
-
+builder.Services.AddScoped<ICategory, CategoryService>();
 
 builder.Services.AddAuthorization(options =>
 {

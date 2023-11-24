@@ -14,8 +14,28 @@ namespace QA.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+//            -المعادن والفيتامينات
+//٢-المكملات الغذائيه
+//٣-الاعشاب
+//٤-الجهاز الهضمي
+//٥-الجهاز العصبي
+//٦-أنظمة غذائية
+//٧-أمراض النسائية
+//٨-امراض الذكورة
+//٩-الغدد
             base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Entity<Category>().HasData(
+      new Category { Id = 1, Name = "المعادن والفيتامينات" },
+      new Category { Id = 2, Name = "المكملات الغذائيه" },
+      new Category { Id = 3, Name = "الاعشاب" },
+      new Category { Id = 4, Name = "الجهاز الهضمي" },
+      new Category { Id = 5, Name = "الجهاز العصبي" },
+      new Category { Id = 6, Name = "أنظمة غذائية" },
+      new Category { Id = 7, Name = "أمراض النسائية" },
+      new Category { Id = 8, Name = "امراض الذكورة" },
+      new Category { Id = 9, Name = "الغدد" }
+        // Add more categories as needed
+            );
             SeedRole(modelBuilder, "Admin", "create", "update", "delete");
            
 
@@ -66,5 +86,6 @@ namespace QA.Data
 
 
         public DbSet<Question> Question { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
