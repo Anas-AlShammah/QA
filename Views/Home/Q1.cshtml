@@ -1,110 +1,51 @@
 ﻿@model QuestionVM
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
 
-<style>
-    .sub{
-        font-weight: 100;
-        color:black !important;
-        text-align:left;
-        border-top: 1px solid;
-    }
-  
-
-    /* Styling for the form elements */
-    .login-form {
-        text-align: center;
-    }
-    p{
-        font-weight: bold;
-        color: #536cb594;
-    }
-    #question{
-        padding: 2%;
-        margin: 0 auto;
-        border: 2px solid #536cb594;
-        width: 70%;
-        text-align: center;
-        height: 15%;
-        border-radius: 35px;
-    }   .form-control {
-        width: 70%;
-        margin: 10px auto;
-        padding: 10px;
-        font-size: 18px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    .btn-orange {
-        padding: 4px 36px 4px 36px!important;
-        font-size: 24px;
-        width:auto;
-        border-radius: 8px !important;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    /* Styling for the bordered box around the heading */
-    .text-blue {
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        color: black;
-        width:60%;
-        
-        padding: 2px;
-        display: inline-block;
-    }
-
-    /* Styling for image */
-    .img-container {
-        margin-bottom: 20px; /* Adjust spacing as needed */
-    }
-</style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<br />
-<br />
 
-<div class="container-fluid" style="height: 100vh;">
-    <div  style="height: 100vh;">
-        <div >
-            <div class="login-form">
-                <!-- Image row -->
-                <div class="img-container">
-                    <img src="/img/logo.png" width="80" height="80" alt="Logo Image" class="img-fluid">
-                </div>
-                <br />
-      
-           
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
 
-                <!-- Heading row -->
-                <div class="text-blue" style="margin-bottom:-10px;">
-                    <h2 style=" font-family: 'Lateef', sans-serif;">السؤال : @Model.Question.Title ؟</h2>
-                    <br />
+          
+
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <img src="~/WebsiteStyle/images/topics/QuestionMark.png" class="custom-block-image img-fluid" alt="">
+
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 style="color: #5d97b7;
+    font-size: 30px !important;" class="mb-2">
+                                    السؤال : @Model.Question.Title
+                                </h5>
+
+                                <p class="mb-0"> @Model.Question.Answer</p>
+
+                              
+                            </div>                         
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Textarea in bordered box -->
-                <div id="question">
-                    <h3 style=" font-family: 'Lateef', sans-serif;">
-                        @Model.Question.Answer
-                    </h3>
-                </div>
-                <br />
-                <div style="width:40%; margin:0 auto;"  >
-                    <h2 style=" font-family: 'Lateef', sans-serif;">مواضيع متعلقة</h2>
+
+                <div class="col-lg-12 col-12 text-center">
+                    <h3 class="mb-4">مواضيع متعلقة </h3>
                 </div>
                 <div class="text-blue" style="margin-bottom:-10px; width:40% !important;">
-                    @foreach(var q in Model.questions)
+                    @foreach (var q in Model.questions)
                     {
                         <p class="sub">@q.Title</p>
                     }
-                   
-                   
 
-                    
                 </div>
-                <br />
-                <!-- Button for submission -->
-               
-            </div>
+            
         </div>
     </div>
-</div>
+    </div>
+</section>
+
+
+

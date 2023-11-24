@@ -1,89 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<style>
-    body {
-        font-family: 'Lateef', system-ui, sans-serif; /* Apply the font to the entire body */
-    }
 
-    /* Styling for the form elements */
-    .login-form {
-        text-align: center;
-    }
-
-    #question {
-        width: 70%;
-        text-align: center;
-        height: 10%;
-        border-radius: 120px;
-    }
-
-    .form-control {
-        width: 70%;
-        margin: 10px auto;
-        padding: 10px;
-        font-size: 25px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    .btn-orange {
-        padding: 4px 36px 4px 36px !important;
-        font-size: 30px;
-        width: auto;
-        border-radius: 8px !important;
-        direction: rtl; /* Align text from right to left */
-    }
-
-    /* Styling for the bordered box around the heading */
-    .text-blue {
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        color: white;
-        width: 50%;
-        background-color: #536cb594 !important;
-        padding: 2px;
-        display: inline-block;
-    }
-
-    /* Styling for image */
-    .img-container {
-        margin-bottom: 20px; /* Adjust spacing as needed */
-    }
-</style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
-<br />
-<br />
 
-<div class="container-fluid" style="height: 100vh;">
-    <div style="height: 100vh;">
-        <div>
-            <div class="login-form">
-                <!-- Image row -->
-                <div class="img-container">
-                    <img src="/img/logo.png" width="80" height="80" alt="Logo Image" class="img-fluid">
-                </div>
-                <br />
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
 
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">اطرح السؤال المطلوب</h1>
 
-                <form method="get"  action="@Url.Action("Search", "Home")">
-                    
-               
-                <!-- Heading row -->
-                <div class="text-blue" style="margin-bottom:-10px;">
-                        <h3 style=" font-family: 'Lateef', sans-serif;">اطرح السؤال المطلوب</h3>
-                </div>
-               
-                <textarea style=" overflow:hidden;
-        height:100px;" id="question" name="str" placeholder="اكتب سؤالك هنا..." class="form-control" rows="5" tyle=" font-family: 'Lateef', sans-serif;"></textarea>
-                <br />
-                <!-- Button for submission -->
-                    <button type="submit" class="btn btn-orange text-white" style="background-color:orange; font-family: 'Lateef', sans-serif; font-size: 28px;">إرسال</button>
+              
+                <form method="get" action="@Url.Action("Search", "Home")" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" >
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text bi-search" id="basic-addon1">
+
+                        </span>
+                        <textarea style=" border:none; overflow:hidden; height:50px;" name="str" placeholder="اكتب سؤالك هنا..." class="form-control" id="keyword" aria-label="Search"></textarea>
+
+                       
+
+                        <button type="submit" class="form-control">ارسال</button>
+                    </div>
                 </form>
             </div>
+
         </div>
     </div>
-</div>
+</section>
