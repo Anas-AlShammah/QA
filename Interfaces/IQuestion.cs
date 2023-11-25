@@ -7,7 +7,7 @@ namespace QA.Interfaces
     {
         void Add(QuestionDto questionDto);
         void AddAll(string text,int Category);
-
+        void Delete(int Id);
         List<Question> GetAll();
         List<Question> SearchAll(string question);
         List<Question> realated(int id);

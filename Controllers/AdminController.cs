@@ -33,10 +33,34 @@ namespace QA.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> AllQuestions()
+        {
+
+            var categiries = _category.GetAll();
+            return View(categiries);
+        }
+		public async Task<IActionResult> QuestionsForCategory(int Id)
+		{
+
+			var questions = _category.GetAllQuestionsForCategory(Id);
+			return View(questions);
+		}
+        [HttpPost]
+        public async Task<IActionResult> DeleteQuestion(int Id)
+        {
+
+            _question.Delete(Id);
+            return Redirect("index");
+        }
         public IActionResult AddQuestion()
         {
             var categiries = _category.GetAll();
             return View(categiries);
+        }
+        public IActionResult UpdateQuestion(int Id)
+        {
+            var question = _question.GetQuestion(Id);
+            return View(question);
         }
         [HttpPost]
         public IActionResult AddQuestion(QuestionDto questionDto)
