@@ -1,0 +1,183 @@
+﻿@model List<Question>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    body {
+        font-family: 'Scheherazade New', sans-serif;
+    }
+
+    :root {
+        --primary: #9fde50;
+        --secondary: #ff5252;
+        --background: #eee;
+        --highlight: #ffda79;
+        /* Theme color */
+        --theme: var(--primary);
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    /* Core styles/functionality */
+    .tab input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .tab__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.35s;
+    }
+
+    .tab input:checked ~ .tab__content {
+        max-height: 10rem;
+    }
+
+    /* Visual styles */
+
+    .tab__label,
+    .tab__close {
+        display: flex;
+        color: white;
+        background: var(--theme);
+        cursor: pointer;
+    }
+
+    .tab__label {
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+        .tab__label::after {
+            content: "\276F";
+            width: 1em;
+            height: 1em;
+            text-align: center;
+            transform: rotate(90deg);
+            transition: all 0.35s;
+        }
+
+    .tab input:checked + .tab__label::after {
+        transform: rotate(270deg);
+    }
+
+    .tab__content p {
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .tab__close {
+        justify-content: flex-end;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .accordion--radio {
+        --theme: var(--secondary);
+    }
+
+    /* Arrow animation */
+    .tab input:not(:checked) + .tab__label:hover::after {
+        animation: bounce .5s infinite;
+    }
+
+    @@keyframes bounce {
+        25% {
+            transform: rotate(90deg) translate(.25rem);
+        }
+
+        75% {
+            transform: rotate(90deg) translate(-.25rem);
+        }
+    }
+
+    h1 {
+        font-family: 'Lateef', system-ui, sans-serif; /* Apply the font to the entire body */
+    }
+</style>
+
+
+
+<h1 style="text-align:center;">جميع الاسئلة</h1>
+
+<div style="width:80%;" class="container">
+    @foreach (var q in Model)
+    {
+        @*<a asp-controller="Admin" asp-action="UpdateQuestion" asp-route-Id="@q.Id">update</a>*@
+        <section class="accordion" style="direction: rtl;">
+            <div class="tab">
+                <input type="checkbox" name="accordion-1" id="@q.Title" checked>
+
+                <label style="    font-size: 20px;" for="@q.Title" class="tab__label">
+                    <div>
+                        <i class="fas fa-question-circle"></i> @q.Title
+                    </div>
+                </label>
+                <div class="tab__content">
+                    <p>@q.Answer</p>
+                    <button data-toggle="modal" data-target="#myModalchange-@q.Id" class="btn btn-primary">تعديل</button>
+                    <button data-toggle="modal" data-target="#myModal-@q.Id" class="btn btn-danger">حذف</button>
+
+                </div>
+
+            </div>
+        </section>
+        <div class="modal fade" id="myModalchange-@q.Id" style="direction: rtl;">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title">تعديل السؤال</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="width:100%;direction: rtl;">
+                        <p>السؤال</p>
+                        <input name="Title" value="@q.Title" style="width:100%;direction: rtl;" />
+                       
+                    </div>
+                    <div class="modal-body">
+                        <p>الإجابة</p>
+                        <textarea name="Answer" style="width:100%;direction: rtl;">@q.Answer </textarea>
+                    </div>
+                    <div class="modal-footer" style="direction: ltr;">
+                        <button class="btn btn-primary" data-dismiss="modal">الغاء</button>
+                        <a class="btn btn-success" asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@q.Id">
+                            <i class="fas fa-edit me-2"></i>تعديل
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal-@q.Id" style="direction: rtl;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">حذف السؤال</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>هل متاكد انك تريد حذف السؤال</p>
+                    </div>
+                    <div class="modal-footer" style="direction: ltr;">
+                        <button class="btn btn-primary" data-dismiss="modal">الغاء</button>
+                        <form method="post" asp-controller="Admin" asp-action="DeleteQuestion">
+                            <input name="Id" value="@q.Id" hidden>
+                            <button class="btn btn-danger" type="submit">
+                            <i class="fas fa-trash-alt me-2"></i>حذف
+                            </button>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

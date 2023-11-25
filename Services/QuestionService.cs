@@ -123,7 +123,16 @@ namespace QA.Services
                     _context.SaveChanges();
                 }
             }
+
+        public void Delete(int Id)
+        {
+            var question= _context.Question
+                            .Where(q=>q.Id == Id)
+                            .FirstOrDefault();
+            _context.Question.Remove(question);
+            _context.SaveChanges();
         }
+    }
 
     }
 

@@ -1,4 +1,5 @@
-﻿using QA.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QA.Data;
 using QA.Interfaces;
 using QA.Models;
 
@@ -16,5 +17,15 @@ namespace QA.Services
             var categories = _context.Categories.ToList();
             return categories;
         }
-    }
+
+		public List<Question> GetAllQuestionsForCategory(int Id)
+		{
+			var questions = _context.Categories
+                .Include(c=>c.questions)
+                .Where(c=>c.Id == Id)
+                .SelectMany(c=>c.questions)
+                .ToList();
+            return questions;
+		}
+	}
 }
