@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-8 col-12 mx-auto">
+			<div class="col-lg-8 col-12 mx-auto" style="direction: rtl;">
 				<h1 class="text-white  text-center" style="font-family: 'Tajawal', sans-serif;">اطرح السؤال المطلوب</h1>
 
               
@@ -20,7 +20,7 @@
                         <span class="input-group-text bi-search" id="basic-addon1">
 
                         </span>
-						<textarea style=" border:none; overflow:hidden; height:50px;font-family: 'Tajawal', sans-serif;direction: rtl;text-align:right;" name="str" placeholder="اكتب سؤالك هنا..." class="form-control" id="keyword" aria-label="Search"></textarea>
+						<textarea style=" border:none; overflow:hidden; height:50px;font-family: 'Tajawal', sans-serif;text-align:right;" name="str" placeholder="اكتب سؤالك هنا..." class="form-control" id="keyword" aria-label="Search"></textarea>
 
 
 
@@ -107,7 +107,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(0).Name</h4>
 					<hr>
 					<hr>
-					<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 			
 		
 			</a>
@@ -124,7 +123,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(1).Name</h4>
 					<hr>
 					<hr>
-					<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 			
 			
 			</a>
@@ -143,7 +141,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(2).Name</h4>
 					<hr>
 					<hr>
-						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 
 					</a>
 				</div>
@@ -160,7 +157,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(3).Name</h4>
 					<hr>
 					<hr>
-						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 
 					</a>
 				</div>
@@ -175,7 +171,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(4).Name</h4>
 					<hr>
 					<hr>
-						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 					</a>
 				</div>
 			</div>
@@ -190,7 +185,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(5).Name</h4>
 					<hr>
 					<hr>
-						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 
 				</a>
 			</div>
@@ -206,7 +200,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(6).Name</h4>
 					<hr>
 					<hr>
-						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 						</a>
 				</div>
 			</div>
@@ -215,12 +208,11 @@
 				<div class="card-box text-center">
 						<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(7).Id" >
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/6904/6904045.png " class="img-fluid" alt="User Pic">
+							<img src="   https://cdn-icons-png.flaticon.com/512/6904/6904045.png " style="filter: grayscale(100%);" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(7).Name</h4>
 					<hr>
 					<hr>
-							<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 
 					</a>
 				</div>
@@ -235,7 +227,6 @@
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(8).Name</h4>
 					<hr>
 					<hr>
-               <p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
 
 					</a>
 				</div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QA.Dtos;
 using QA.Interfaces;
 using QA.Models;
@@ -25,6 +26,7 @@ namespace QA.Controllers
             _question.Add(questionDto);
             return RedirectToAction("Index");
         }
+        [Authorize]
         public IActionResult Index()
         {
             var categiries = _category.GetAll();
@@ -35,7 +37,8 @@ namespace QA.Controllers
         {
             return View();
         }
-        public IActionResult Q1(int id)
+		[Authorize]
+		public IActionResult Q1(int id)
         {
            var question = _question.GetQuestion(id);
             var realted = question.Category.questions;
@@ -46,16 +49,19 @@ namespace QA.Controllers
             };
             return View(QuestionMode);
         }
-        public IActionResult Search(string str)
+		[Authorize]
+		public IActionResult Search(string str)
         {
             var questions = _question.SearchAll(str);
             ViewBag.Question = str;
             return View(questions);
         }
-        public IActionResult Q2()
+		[Authorize]
+		public IActionResult Q2()
         {
             return View();
         }
+		[Authorize]
 		public async Task<IActionResult> QuestionsForCategory(int Id)
 		{
 			ViewBag.Category = _category.CategoryName(Id);
@@ -64,17 +70,20 @@ namespace QA.Controllers
 
             return View(questions);
 		}
+		[Authorize]
 		public IActionResult Questions()
         {
             var questions = _question.GetAll();
             return View(questions);
         }
-        public IActionResult Question()
+		[Authorize]
+		public IActionResult Question()
         {
            
             return View();
         }
-        public IActionResult Privacy()
+		[Authorize]
+		public IActionResult Privacy()
         {
             return View();
         }

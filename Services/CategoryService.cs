@@ -19,8 +19,23 @@ namespace QA.Services
                 .Where(x => x.Id == Id).FirstOrDefault();
             return Category.Name;
         }
+		public void RemoveDuplicateQuestions(int categoryId)
+		{
+			Category category = _context.Categories.Include(c => c.questions).FirstOrDefault(c => c.Id == categoryId);
 
-        public List<Category> GetAll()
+			if (category != null)
+			{
+				var uniqueQuestions = category.questions
+		   .GroupBy(q => q.Title)
+		   .Select(g => g.First())
+		   .ToList();
+
+				category.questions = uniqueQuestions.ToList();
+
+				_context.SaveChanges();
+			}
+		}
+		public List<Category> GetAll()
         {
             var categories = _context.Categories.ToList();
             return categories;

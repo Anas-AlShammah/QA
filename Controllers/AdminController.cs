@@ -6,8 +6,8 @@ using QA.ViewModels;
 
 namespace QA.Controllers
 {
-    [Authorize]
-    public class AdminController : Controller
+	[Authorize(Roles = "Admin")]
+	public class AdminController : Controller
     {
       
         private readonly IQuestion _question;
@@ -41,7 +41,7 @@ namespace QA.Controllers
         }
 		public async Task<IActionResult> QuestionsForCategory(int Id)
 		{
-
+            //_category.RemoveDuplicateQuestions(Id);
 			var questions = _category.GetAllQuestionsForCategory(Id);
             ViewBag.Category = _category.CategoryName(Id);
             return View(questions);

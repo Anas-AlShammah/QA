@@ -43,17 +43,40 @@
                 <div style="justify-content:space-between;" class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" asp-area="" asp-controller="Home" asp-action="Index">الرئيسية</a>
-                        </li>  
+                            <a class="nav-link click-scroll" asp-area="" asp-controller="Home" asp-action="Index"
+                               style="font-family: 'Tajawal', sans-serif;font-size:20px;">الرئيسية</a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" asp-area="" asp-controller="admin" asp-action="Index"
+                                   style="font-family: 'Tajawal', sans-serif;font-size:20px;">لوحة التحكم</a>
+                            </li>
+                        }
                     </ul>
                     <a class="navbar-brand" href="/">
                         <img b-zj2taeaka9="" src="/img/logo.png" width="60" height="60" alt="Logo Image" class="img-fluid">
 
                     </a>
+                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                        <span class="nav-link">@User.Identity.Name</span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                               @* <li><a class="dropdown-item" asp-controller="Auth" asp-action="ChangePassword">Change Password</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Activity">Activity Log</a></li>
+                                <li><hr class="dropdown-divider" /></li>*@
 
-                    <div class="d-none d-lg-block">
+                                <li><a class="dropdown-item" asp-controller="User" asp-action="Logout">Logout</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                   @* <div class="d-none d-lg-block">
+                      
+                           
                         <a asp-area="" asp-controller="Home" asp-action="Login" class="navbar-icon bi-person smoothscroll"></a>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </nav>
