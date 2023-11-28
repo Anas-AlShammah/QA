@@ -11,9 +11,11 @@ namespace QA.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IQuestion _question;
+        private readonly ICategory _category;
 
-        public HomeController(IQuestion question,ILogger<HomeController> logger)
+        public HomeController(ICategory category, IQuestion question,ILogger<HomeController> logger)
         {
+            _category = category;
             _logger = logger;
             _question = question;
         }
@@ -25,7 +27,9 @@ namespace QA.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var categiries = _category.GetAll();
+            return View(categiries);
+          
         }
         public IActionResult Login()
         {
@@ -34,7 +38,7 @@ namespace QA.Controllers
         public IActionResult Q1(int id)
         {
            var question = _question.GetQuestion(id);
-            var realted = _question.realated(id);
+            var realted = question.Category.questions;
             var QuestionMode = new QuestionVM()
             {
                 Question = question,
@@ -52,7 +56,15 @@ namespace QA.Controllers
         {
             return View();
         }
-        public IActionResult Questions()
+		public async Task<IActionResult> QuestionsForCategory(int Id)
+		{
+			ViewBag.Category = _category.CategoryName(Id);
+			var questions = _category.GetAllQuestionsForCategory(Id);
+           
+
+            return View(questions);
+		}
+		public IActionResult Questions()
         {
             var questions = _question.GetAll();
             return View(questions);

@@ -43,7 +43,8 @@ namespace QA.Controllers
 		{
 
 			var questions = _category.GetAllQuestionsForCategory(Id);
-			return View(questions);
+            ViewBag.Category = _category.CategoryName(Id);
+            return View(questions);
 		}
         [HttpPost]
         public async Task<IActionResult> DeleteQuestion(int Id)

@@ -2,41 +2,26 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
 
 
 <link href="~/css/adminFormStyle.css" rel="stylesheet">
-@*<div class="row">
-    @foreach (var category in Model)
-    {
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@category.Name</h5>
-                    <!-- Add other category details or actions within the card -->
-                </div>
-            </div>
-        </div>
+<style>
+    .logRegForm .loginnow {
+        background: #30557a !important;
+        border: 2px solid;
     }
-</div>
-<form asp-controller="Admin" asp-action="AddQuestions" method="Post" style="font-family:Scheherazade New; direction:rtl;">
-
-    <textarea name="text" type="text" />
-
-
-    <button class="loginnow" type="submit">اضافة</button>
-</form>*@
+</style>
 
 <section class="logRegForm">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7 col-md-10">
                 <div class="contact_form_wrappre2">
-                    <h2>
+                    <h2 style="font-family: 'Tajawal', sans-serif;">
                         اضافة سؤال
 
                     </h2>
-                    <form asp-controller="Admin" asp-action="AddQuestions" method="Post" style="font-family:Scheherazade New; direction:rtl; ">
+                    <form asp-controller="Admin" asp-action="AddQuestions" method="Post" style="font-family:Tajawal; direction:rtl; ">
                         <div class="inputArea">
                             <div class="form-row">
                                 <div class="col">
@@ -50,7 +35,7 @@
                                         </select>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="url">
-                                                <i class="fas fa-comment"></i>
+                                                <i class="fas fa-th-list"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -73,7 +58,7 @@
                          
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <button class="loginnow" type="submit">اضافة</button>
+                                    <button class="loginnow" type="submit" style="font-family: 'Tajawal', sans-serif;">اضافة</button>
                                 </div>
                             </div>
                         </div>

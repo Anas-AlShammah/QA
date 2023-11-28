@@ -9,7 +9,8 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -57,27 +58,32 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
                             Dashboard
                         </a>
-                     
+
                         <a class="nav-link" asp-controller="Admin" asp-action="Register">
-                            <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
-                           Add Users
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
+                            Add Users
                         </a>
+
                         <a class="nav-link" asp-controller="Admin" asp-action="AddQuestion">
-                            <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-question-circle"></i></div>
                             Add Question
                         </a>
-                        <a class="nav-link" asp-controller="Admin" asp-action="Questions">
-                            <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
+
+                    @*    <a class="nav-link" asp-controller="Admin" asp-action="Questions">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                             All Questions
                         </a>
+*@
                         <a class="nav-link" asp-controller="Admin" asp-action="AllQuestions">
-                            <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
-                            Categiries
+                            <div class="sb-nav-link-icon"><i class="fas fa-th-list"></i></div>
+                            Categories
                         </a>
+
                         <a class="nav-link" asp-controller="Admin" asp-action="AllUsers">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
                             Users
                         </a>
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

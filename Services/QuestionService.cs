@@ -1,4 +1,5 @@
-﻿using QA.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QA.Data;
 using QA.Dtos;
 using QA.Interfaces;
 using QA.Models;
@@ -34,7 +35,10 @@ namespace QA.Services
 
         public Question GetQuestion(int id)
         {
-            var question= _context.Question.FirstOrDefault(q=>q.Id == id);
+            var question= _context.Question
+                .Include(q=>q.Category)
+                .ThenInclude(c=>c.questions)
+                .FirstOrDefault(q=>q.Id == id);
             return question;
         }
 

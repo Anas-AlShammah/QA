@@ -12,6 +12,14 @@ namespace QA.Services
         {
             _context = context;
         }
+
+        public string CategoryName(int Id)
+        {
+            var Category = _context.Categories
+                .Where(x => x.Id == Id).FirstOrDefault();
+            return Category.Name;
+        }
+
         public List<Category> GetAll()
         {
             var categories = _context.Categories.ToList();
@@ -22,6 +30,7 @@ namespace QA.Services
 		{
 			var questions = _context.Categories
                 .Include(c=>c.questions)
+                
                 .Where(c=>c.Id == Id)
                 .SelectMany(c=>c.questions)
                 .ToList();

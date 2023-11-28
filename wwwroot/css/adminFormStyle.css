@@ -38,8 +38,8 @@
 }
 
 .logRegForm .loginnow {
-    background: #9fde50;
-    border: 2px solid #9fde50;
+    background: #30557a !important;
+    border: 2px solid;
 }
 
 
@@ -51,9 +51,9 @@
 }
 
     .logRegForm .lostpass:hover {
-        background: #9e8b8000;
-        border: 2px siolid #555;
-        color: #555
+        background: #30557a;
+        border: 2px solid ;
+        color: #555;
     }
 
 
@@ -72,10 +72,10 @@
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
-    color: #495057;
+    color: #fff;
     text-align: center;
-    background-color: #9fde50;
-    border: 0px solid #ced4da;
+    background-color: #30557a;
+    border: 0px solid;
     border-radius: 0px;
     width: 60px;
     height: 60px;
@@ -113,7 +113,7 @@
 }
 
 .logRegForm h2 {
-    font-family: 'Scheherazade New', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     color: #333;
     display: block;
     text-align: center;

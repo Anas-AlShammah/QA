@@ -3,7 +3,19 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-
+<style>
+    .accordion-button::after {
+        flex-shrink: 0;
+        width: var(--bs-accordion-btn-icon-width);
+        height: var(--bs-accordion-btn-icon-width);
+        margin-left: auto;
+        content: "";
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: 0px;
+        transition: var(--bs-accordion-btn-icon-transition);
+    }
+</style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <br />
 <br />
@@ -16,31 +28,32 @@
 
             <div class="clearfix"></div>
 
-            <div class="col-lg-5 col-12">
+          @*  <div class="col-lg-5 col-12">
                 <img src="~/WebsiteStyle/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
-            </div>
+            </div>*@
 
-            <div class="col-lg-6 col-12 m-auto">
-                <h2 style="text-align:center" >السؤال : @ViewBag.question ؟</h2>
+            <div class="col-lg-12 col-12 m-auto" style="direction: rtl;">
+                <h2 style="text-align:center;font-family: 'Tajawal', sans-serif;">السؤال : @ViewBag.question ؟</h2>
                 <div class="accordion" id="accordionExample">
 
                     @foreach (var q in Model)
                     {
-                        <div  class="accordion-item">
-                            <a style="display:block !important;" asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
+                        <div class="accordion-item" style="direction: rtl;text-align: right;">
+                            <a style="display:block !important;text-decoration:none;" asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
                                 <h2 class="accordion-header" id="@q.Title">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    @q.Title
-                                </button>
-                            </h2>
+                                    <button class="accordion-button" type="button" style="text-align: right;font-family: 'Tajawal', sans-serif;" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        @q.Title
+                                    </button>
+                                </h2>
 
-                                <div id="@q.Title" class="accordion-collapse collapse show" aria-labelledby="@q.Title" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div id="@q.Title" class="accordion-collapse collapse show" aria-labelledby="@q.Title" data-bs-parent="#accordionExample" style="direction: rtl !important;">
+                                    <div class="accordion-body" style="text-align: right;font-family: 'Tajawal', sans-serif;">
                                         @q.Answer
                                     </div>
-                            </div>
+                                </div>
                             </a>
                         </div>
+
                     
                     }
 
@@ -53,47 +66,3 @@
         </div>
     </div>
 </section>
-@*<div class="container-fluid" style="height: 100vh;">
-    <div style="height: 100vh;">
-        <div>
-            <div class="login-form">
-                <!-- Image row -->
-                <div class="img-container">
-                    <img src="/img/logo.png" width="80" height="80" alt="Logo Image" class="img-fluid">
-                </div>
-                <br />
-
-
-
-                <!-- Heading row -->
-                <div class="text-blue" style="margin-bottom:-10px;">
-                    <h2 style=" font-family: 'Lateef', sans-serif;">السؤال : @ViewBag.question ؟</h2>
-                    <br />
-                </div>
-
-                <div >
-                     @foreach (var q in Model)
-                     {
-                    <div id="question">
-                            <a asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
-                        <h2 style="font-weight: bold;
-        color: #536cb594;font-family: 'Lateef', sans-serif;">@q.Title</h2>
-                                <h2 style="font-size: 30px;font-family: 'Lateef', sans-serif;">
-
-                           @q.Answer
-                        </h2>
-                        </a>
-                         </div>
-                    }
-
-                </div>
-                <!-- Button for submission -->
-
-            </div>
-        </div>
-    </div>
-</div>
-<br />
-<br />
-<br />
-<br />*@

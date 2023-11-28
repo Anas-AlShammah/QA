@@ -6,5 +6,6 @@ namespace QA.Interfaces
     {
         List<Category> GetAll();
         List<Question> GetAllQuestionsForCategory(int Id);
+        string CategoryName(int Id);
     }
 }

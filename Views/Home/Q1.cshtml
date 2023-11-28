@@ -5,25 +5,25 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<section class="section-padding">
+<section class="section-padding" style="direction: rtl;">
     <div class="container">
         <div class="row">
 
           
 
-            <div class="col-lg-8 col-12 mt-3 mx-auto">
+            <div class="col-lg-10 col-12 mt-3 mx-auto" style="text-align: right;">
                 <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                     <div class="d-flex">
-                        <img src="~/WebsiteStyle/images/topics/QuestionMark.png" class="custom-block-image img-fluid" alt="">
-
+@*                        <img src="~/WebsiteStyle/images/topics/QuestionMark.png" class="custom-block-image img-fluid" alt="">
+*@
                         <div class="custom-block-topics-listing-info d-flex">
                             <div>
                                 <h5 style="color: #5d97b7;
-    font-size: 30px !important;" class="mb-2">
+    font-size: 30px !important;direction: rtl;font-family: 'Tajawal', sans-serif;" class="mb-2">
                                     السؤال : @Model.Question.Title
                                 </h5>
 
-                                <p class="mb-0"> @Model.Question.Answer</p>
+                                <p class="mb-0" style="font-family: 'Tajawal', sans-serif;"> @Model.Question.Answer</p>
 
                               
                             </div>                         
@@ -32,13 +32,17 @@
                 </div>
 
                 <div class="col-lg-12 col-12 text-center">
-                    <h3 class="mb-4">مواضيع متعلقة </h3>
+                    <h3 class="mb-4" style="font-family: 'Tajawal', sans-serif;">مواضيع متعلقة </h3>
+                    @*<h3 class="mb-4">@Model.Question.Category.Name </h3>*@
                 </div>
-                <div class="text-blue" style="margin-bottom:-10px; width:40% !important;">
-                    @foreach (var q in Model.questions)
-                    {
-                        <p class="sub">@q.Title</p>
-                    }
+                <div class="text-blue col-lg-12 col-12  " style="margin-bottom:-10px;">
+                    @foreach (var q in Model.questions.OrderBy(x => Guid.NewGuid()).Take(5))
+                {
+                        <a style="display:block !important;text-decoration:none;" asp-controller="home" asp-action="Q1" asp-route-id="@q.Id">
+                            <p class="sub" style="font-family: 'Tajawal', sans-serif;">@q.Title</p>
+                        </a>
+                        <br />
+                }
 
                 </div>
             
@@ -46,6 +50,32 @@
     </div>
     </div>
 </section>
+<div class="text-blue" style="margin-bottom: -10px; width: 40% !important;">
+    <!-- Display the top 5 related topics based on the question title -->
+    @foreach (var q in Model.questions)
+    {
+        <p class="sub" style="display: none;">@q.Title</p>
+    }
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var questionTitle = '@Model.Question.Title'; // Get the question title
 
+        var topics = document.querySelectorAll('.sub');
+        var matchingTopics = [];
 
+        // Iterate through topics to find matches with the question title
+        topics.forEach(function (topic) {
+            var topicText = topic.textContent.toLowerCase();
+            if (topicText.includes(questionTitle.toLowerCase())) {
+                matchingTopics.push(topic);
+            }
+        });
+
+        // Display the top 5 matching topics
+        for (var i = 0; i < Math.min(5, matchingTopics.length); i++) {
+            matchingTopics[i].style.display = 'block';
+        }
+    });
+</script>

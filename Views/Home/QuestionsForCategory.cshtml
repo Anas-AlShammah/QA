@@ -1,0 +1,236 @@
+﻿@model List<Question>
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+<style>
+    body {
+        font-family: 'Scheherazade New', sans-serif;
+    }
+
+    :root {
+        --primary: var(--primary-color);
+        /*color:;*/
+        --secondary: #ff5252;
+        --background: #eee;
+        --highlight: #ffda79;
+        /* Theme color */
+        --theme: var(--primary);
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    /* Core styles/functionality */
+    .tab input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .tab__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.35s;
+    }
+
+    .tab input:checked ~ .tab__content {
+        max-height: 10rem;
+    }
+
+    /* Visual styles */
+
+    .tab__label,
+    .tab__close {
+        display: flex;
+        color: white;
+        background: var(--theme);
+        cursor: pointer;
+    }
+
+    .tab__label {
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+        .tab__label::after {
+            content: "\276F";
+            width: 1em;
+            height: 1em;
+            text-align: center;
+            transform: rotate(90deg);
+            transition: all 0.35s;
+        }
+
+    .tab input:checked + .tab__label::after {
+        transform: rotate(270deg);
+    }
+
+    .tab__content p {
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .tab__close {
+        justify-content: flex-end;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .accordion--radio {
+        --theme: var(--secondary);
+    }
+
+    /* Arrow animation */
+    .tab input:not(:checked) + .tab__label:hover::after {
+        animation: bounce .5s infinite;
+    }
+
+    @@keyframes bounce {
+        25% {
+            transform: rotate(90deg) translate(.25rem);
+        }
+
+        75% {
+            transform: rotate(90deg) translate(-.25rem);
+        }
+    }
+
+    h1 {
+        font-family: 'Tajawal', system-ui, sans-serif; /* Apply the font to the entire body */
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px; /* Adjust as needed */
+    }
+
+    #searchInput {
+        width: 300px; /* Set the width of the input */
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .container {
+        margin: 0 auto; /* Center the container */
+        /* Existing container styles */
+    }
+
+    .copy-button {
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    body {
+        font-family: 'Tajawal', sans-serif;
+    }
+</style>
+
+
+
+<h1 style="text-align:center;">@ViewBag.Category</h1>
+<br />
+<br />
+<div class="search-container" style="direction: rtl;">
+    <input type="text" id="searchInput" placeholder="بـحـث">
+</div>
+
+<div style="width:80%;" class="container">
+    @foreach (var q in Model)
+    {
+        @*<a asp-controller="Admin" asp-action="UpdateQuestion" asp-route-Id="@q.Id">update</a>*@
+        <section class="accordion" style="direction: rtl;" data-title="@q.Title">
+            <div class="tab">
+                <input type="checkbox" name="accordion-1" id="@q.Title" checked>
+
+                <label style="    font-size: 20px;" for="@q.Title" class="tab__label">
+                    <div>
+                        @*<i class="fas fa-question-circle"></i>*@ @q.Title
+                    </div>
+                </label>
+                <div class="tab__content">
+                    <p>
+                        <span class="answer-text">@q.Answer</span>
+                        <button class="copy-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path>
+                            </svg>
+                        </button>
+                    </p>
+                    
+                   
+                </div>
+
+            </div>
+        </section>
+  
+    }
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const copyButtons = document.querySelectorAll('.copy-button');
+
+        copyButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                const answerText = this.parentElement.querySelector('.answer-text').innerText;
+
+                // Create a temporary textarea to copy the text
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = answerText;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+
+                // Hide the copy icon after copying
+                const icon = this.querySelector('svg');
+                icon.style.visibility = 'hidden';
+                setTimeout(() => {
+                    icon.style.visibility = 'visible';
+                }, 5000); // Make the icon visible again after 5 seconds (5000 milliseconds)
+
+                // Show 'Copied!' message for 5 seconds and then show the icon again
+                this.innerHTML = icon.outerHTML; // Set button text to the icon
+                setTimeout(() => {
+                    this.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>'; // Change button text back to the icon after 1 second
+                }, 1000); // Revert back to the icon after 1 second
+            });
+        });
+    });
+</script>
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const accordions = document.querySelectorAll('.accordion');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            accordions.forEach(function (accordion) {
+                const title = accordion.getAttribute('data-title').toLowerCase();
+                const accordionElement = accordion.querySelector('.tab');
+
+                if (title.includes(searchTerm)) {
+                    accordionElement.style.display = 'block';
+                } else {
+                    accordionElement.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
