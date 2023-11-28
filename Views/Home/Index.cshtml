@@ -73,6 +73,11 @@
 	body {
 		font-family: 'Tajawal', sans-serif;
 	}
+
+	.card-box a {
+		text-decoration:none !important;
+		width:100% !important;
+	}
 </style>
 <head>
 	<title>How To Create Bootstrap Card Design With Hover Effects</title>
@@ -87,117 +92,152 @@
 </head>
 <body>
 	<div class="container" style="font-family: 'Tajawal', sans-serif;">
-		<div class="row">
-		</div>
 
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card-box text-center">
+			<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(0).Id">
+
+			
+				
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/10153/10153535.png" class="img-fluid" alt="User Pic">
+					
+						<img src="~/img/nutrient.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(0).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(0).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</a>
-				</div>
+					<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+			
+		
+			</a>
 			</div>
-
+			</div>
 			<div class="col-md-4">
 				<div class="card-box text-center">
+			<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(1).Id">
+			
+				
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/2996/2996833.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/supplement.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(1).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(1).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</a>
+					<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+			
+			
+			</a>
 				</div>
 			</div>
 
+
 			<div class="col-md-4">
 				<div class="card-box text-center">
+				<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(2).Id" >
+
+			
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/9818/9818195.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/tea.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(2).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(2).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white">الأسئلة</a>
+						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+
+					</a>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card-box text-center">
+					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(3).Id" >
+
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/9027/9027706.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/esophagus.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(3).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(3).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</a>
+						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+
+					</a>
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="card-box text-center">
+					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(4).Id" >
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/9954/9954417.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/brain.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(4).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(4).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</a>
+						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+					</a>
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="card-box text-center">
+					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(5).Id" >
+
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/4444/4444211.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/plan.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(5).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(5).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white">الأسئلة</a>
-				</div>
+						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+
+				</a>
 			</div>
+		</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card-box text-center">
+					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(6).Id">
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/4556/4556973.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/gynecology.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(6).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(6).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white">الأسئلة</a>
+						<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+						</a>
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="card-box text-center">
+						<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(7).Id" >
 					<div class="user-pic">
 						<img src="   https://cdn-icons-png.flaticon.com/512/6904/6904045.png " class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(7).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(7).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white">الأسئلة</a>
+							<p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+
+					</a>
 				</div>
 			</div>
 
 			<div class="col-md-4">
 				<div class="card-box text-center">
+						<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(8).Id" >
 					<div class="user-pic">
-						<img src="   https://cdn-icons-png.flaticon.com/512/4349/4349206.png " class="img-fluid" alt="User Pic">
+						<img src="~/img/endocrine.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(8).Name</h4>
 					<hr>
 					<hr>
-					<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(8).Id" class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white">الأسئلة</a>
+               <p class="btn " style="font-family: 'Tajawal', sans-serif; background-color: #30557a;color:white"> الأسئلة</p>
+
+					</a>
 				</div>
 			</div>
 		</div>
