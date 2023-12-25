@@ -1,0 +1,81 @@
+﻿@model List<Category>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="~/css/adminFormStyle.css" rel="stylesheet">
+<style>
+    .logRegForm .loginnow {
+        background: #30557a !important;
+        border: 2px solid;
+    }
+</style>
+
+<section class="logRegForm">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-10">
+                <div class="contact_form_wrappre2">
+                    <h2 style="font-family: 'Tajawal', sans-serif;">
+                        اضافة سؤال
+
+                    </h2>
+                    <form asp-controller="Admin" asp-action="AddOneQuestion" method="Post" style="font-family:Tajawal; direction:rtl; ">
+                        <div class="inputArea">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <select class="form-control" id="categorySelect" name="CategoryId">
+                                            <option>اختار تصنيف</option>
+                                            @foreach (var category in Model)
+                                            {
+                                                <option value="@category.Id">@category.Name</option>
+                                            }
+                                        </select>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-th-list"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="السؤال" name="Title"></textarea>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-comment"></i>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="الإجابة" name="Answer"></textarea>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="url">
+                                                <i class="fas fa-comment"></i>
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <button class="loginnow" type="submit" style="font-family: 'Tajawal', sans-serif;">اضافة</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

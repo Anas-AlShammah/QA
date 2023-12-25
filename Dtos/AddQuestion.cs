@@ -1,14 +1,11 @@
-﻿using QA.Models;
-
-namespace QA.Dtos
+﻿namespace QA.Dtos
 {
-    public class UpdateQuestionDto
+    public class AddQuestion
     {
-    
         public string Title { get; set; }
 
         public string Answer { get; set; }
 
- 
+        public int CategoryId { get; set; }
     }
 }

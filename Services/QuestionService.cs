@@ -3,7 +3,9 @@ using QA.Data;
 using QA.Dtos;
 using QA.Interfaces;
 using QA.Models;
+using QA.ViewModels;
 using System.Text.RegularExpressions;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace QA.Services
 {
@@ -82,18 +84,35 @@ namespace QA.Services
         {
             question = question.Replace("\r\n", "").Replace("\n", "");
 
+            // Split the question into search words
             var searchWords = question.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
+            // Retrieve all questions from the database
             var allQuestions = _context.Question.ToList();
 
+            // Perform case-insensitive, partial word matching
             var filteredQuestions = allQuestions
-                .Where(q =>
-                    searchWords.Any(word =>
-                        q.Title.Contains(word) || q.Answer.Contains(word)
-                    )
-                )
-                .ToList();
+    .Where(q =>
+        searchWords.All(word =>
+            q.Title.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0
+        )
+    )
+    .OrderBy(q => q.Title.Length)
+    .ToList();
+            //question = question.Replace("\r\n", "").Replace("\n", "");
 
+            //var searchWords = question.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            //var allQuestions = _context.Question.ToList();
+
+            //var filteredQuestions = allQuestions
+            //    .Where(q =>
+            //        searchWords.Any(word =>
+            //            q.Title.Contains(word) 
+            //        )
+            //    )
+            //    .ToList();
+            //|| q.Answer.Contains(word)
             return filteredQuestions;
         }
 
@@ -134,6 +153,29 @@ namespace QA.Services
                             .Where(q=>q.Id == Id)
                             .FirstOrDefault();
             _context.Question.Remove(question);
+            _context.SaveChanges();
+        }
+
+		public int Update(int Id, UpdateQuestionDto updateQuestionDto)
+		{
+			var question = _context.Question  
+			   .FirstOrDefault(q => q.Id == Id);
+            question.Answer= updateQuestionDto.Answer;
+            question.Title = updateQuestionDto.Title;
+            _context.SaveChanges();
+            return question.CategoryId;
+		}
+
+        public void AddOneQuestion(AddQuestion addQuestion)
+        {
+            var questions = new Question()
+            {
+                Title = addQuestion.Title,
+                Answer = addQuestion.Answer,
+                CategoryId = addQuestion.CategoryId,
+                KeyWord = "test"
+            };
+            _context.Question.Add(questions);
             _context.SaveChanges();
         }
     }

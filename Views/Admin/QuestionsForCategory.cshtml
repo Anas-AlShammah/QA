@@ -138,23 +138,27 @@
                             <span>&times;</span>
                         </button>
                     </div>
+                    <form asp-controller="Admin" asp-action="UpdateQuestion" method="post">
+                        <input name="Id" value="@q.Id" hidden />
                     <div class="modal-body" style="width:100%;direction: rtl;">
                         <p style="font-family: 'Tajawal', sans-serif;">السؤال</p>
                         <input name="Title" value="@q.Title" style="width:100%;direction: rtl;font-family: 'Tajawal', sans-serif;" />
                        
                     </div>
+                    
                     <div class="modal-body">
                         <p style="font-family: 'Tajawal', sans-serif;">الإجابة</p>
                         <textarea name="Answer" style="width:100%;direction: rtl;font-family: 'Tajawal', sans-serif;">@q.Answer </textarea>
                     </div>
                     <div class="modal-footer mb-5" style="direction: ltr;">
                         <button class="btn btn-primary mb-5" data-dismiss="modal" style="font-family: 'Tajawal', sans-serif;">الغاء</button>
-                        <a class="btn btn-success mb-5" asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@q.Id" style="font-family: 'Tajawal', sans-serif;">
+                            <button class="btn btn-success mb-5" type="submit" style="font-family: 'Tajawal', sans-serif;">
                             <i class="fas fa-edit me-2"></i>تعديل
-                        </a>
+                        </button>
                         
                         
                     </div>
+                    </form>
                     
                 </div>
             </div>

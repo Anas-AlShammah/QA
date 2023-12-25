@@ -6,6 +6,8 @@ namespace QA.Interfaces
     public interface IQuestion
     {
         void Add(QuestionDto questionDto);
+        void AddOneQuestion(AddQuestion addQuestion);
+        int Update(int Id,UpdateQuestionDto updateQuestionDto);
         void AddAll(string text,int Category);
         void Delete(int Id);
         List<Question> GetAll();

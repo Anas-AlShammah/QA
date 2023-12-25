@@ -1,14 +1,14 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
 
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Tajawal', sans-serif;
 }
 
-
+/*"font-family: 'Tajawal', sans-serif;"*/
 .Main-container {
     width: 100%;
     margin: 0 auto;
@@ -55,7 +55,7 @@
 }
 
 .login-form-title {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     font-size: 24px;
     color: #263238;
     line-height: 1.2;
@@ -177,14 +177,14 @@
 }
 
 .txt1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #666666;
 }
 
 .txt2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #666666;
@@ -199,7 +199,7 @@
 }
 
 a {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
