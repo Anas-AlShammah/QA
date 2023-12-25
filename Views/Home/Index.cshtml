@@ -34,8 +34,8 @@
 </section>
 <style>
 	.user-pic {
-		width: 150px;
-		height: 150px;
+		width: 100px;
+		height: 100px;
 		overflow: hidden;
 		border-radius: 100%;
 		margin: 20px auto 20px;
@@ -80,7 +80,7 @@
 	}
 </style>
 <head>
-	<title>How To Create Bootstrap Card Design With Hover Effects</title>
+	<title>فكر تاني</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -98,11 +98,11 @@
 				<div class="card-box text-center">
 			<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(0).Id">
 
-			
-				
-					<div class="user-pic">
-					
-						<img src="~/img/nutrient.png" class="img-fluid" alt="User Pic">
+
+
+						<div class="user-pic" >
+
+							<img src="~/img/nutrient.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(0).Name</h4>
 					<hr>
@@ -135,7 +135,7 @@
 				<a asp-controller="home" asp-action="QuestionsForCategory" asp-route-Id="@Model.ElementAt(2).Id" >
 
 			
-					<div class="user-pic">
+					<div class="user-pic" >
 						<img src="~/img/tea.png" class="img-fluid" alt="User Pic">
 					</div>
 					<h4 style="font-family: 'Tajawal', sans-serif;">@Model.ElementAt(2).Name</h4>

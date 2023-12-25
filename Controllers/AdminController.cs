@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using QA.Dtos;
 using QA.Interfaces;
 using QA.ViewModels;
+using System;
 
 namespace QA.Controllers
 {
@@ -58,11 +59,24 @@ namespace QA.Controllers
             var categiries = _category.GetAll();
             return View(categiries);
         }
-        public IActionResult UpdateQuestion(int Id)
+        public IActionResult AddOneQuestion()
         {
-            var question = _question.GetQuestion(Id);
-            return View(question);
+            var categiries = _category.GetAll();
+            return View(categiries);
         }
+        [HttpPost]
+        public IActionResult AddOneQuestion(AddQuestion addQuestion)
+        {
+            _question.AddOneQuestion(addQuestion);
+            return RedirectToAction("AddOneQuestion");
+        }
+        [HttpPost]
+        public IActionResult UpdateQuestion(int Id, UpdateQuestionDto updateQuestionDto)
+        {
+            var id=_question.Update(Id, updateQuestionDto);
+            return RedirectToAction("QuestionsForCategory", new { id = id });
+            
+		}
         [HttpPost]
         public IActionResult AddQuestion(QuestionDto questionDto)
         {

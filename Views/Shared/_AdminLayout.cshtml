@@ -22,7 +22,7 @@
         <!-- Navbar Search-->
 
 
-        <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="@Url.Action("Search", "Task")">
+        <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="@Url.Action("Search", "Home")">
             <div class="input-group">
                 <input class="form-control" type="text" name="searchTerm" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                 <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
@@ -67,9 +67,13 @@
                             Add Users
                         </a>
 
-                        <a class="nav-link" asp-controller="Admin" asp-action="AddQuestion">
+                        <a class="nav-link" asp-controller="Admin" asp-action="AddOneQuestion">
                             <div class="sb-nav-link-icon"><i class="fas fa-question-circle"></i></div>
                             Add Question
+                        </a>
+                        <a class="nav-link" asp-controller="Admin" asp-action="AddQuestion">
+                            <div class="sb-nav-link-icon"><i class="fas fa-question-circle"></i></div>
+                            Add Questions
                         </a>
 
                     @*    <a class="nav-link" asp-controller="Admin" asp-action="Questions">

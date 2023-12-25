@@ -1,50 +1,62 @@
 ﻿@{
     Layout = null;
 }
-<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
 <link href="~/css/LoginRegister.css" rel="stylesheet">
-
-
+<style>
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        top:100px;
+    }
+</style>
 
 
 <div class="Main-container">
+    
     <div class="container-login">
+        <div class="center">
+            <img b-zj2taeaka9="" src="/img/logo.png" width="100" height="100" alt="Logo Image" class="img-fluid">
+        </div>
         <div class="wrap-login">
 
             <div class="login-pic">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdj9ByosrjA-nsg7GCqE3bAawKrz4RmmzPjA&usqp=CAU" style=" padding-top: 120px;" alt="IMG">
+                <img src="/img/login.jpg"  alt="IMG">
             </div>
 
+           @* <img b-zj2taeaka9="" src="/img/logo.png" width="100" height="100" alt="Logo Image" class="img-fluid">*@
 
             <form class="login-form" asp-controller="User" asp-action="Login" method="post" style="padding-left:20px;">
-                <span class="login-form-title">بنك الأسئلة</span>
+                <span class="login-form-title" style="font-family: 'Tajawal', sans-serif;">بنك الأسئلة  فكر تاني</span>
 
 
 
                 <div class="wrap-input">
                     <br>
                   @* <label>USERNAME</label>*@
-                    <input type="text" id="username" class="input" name="username" placeholder="اسم المستخدم">      
-                   
+                    <input type="text" id="username" style="direction: rtl;font-family: 'Tajawal', sans-serif;" class="input" name="username" placeholder="اسم المستخدم" required>
+
                 </div>
                 <div class="wrap-input">
                     <br>
                  @*   <label>PASSWORD</label>
 *@
-                    <input type="password" class="input" id="password" name="password" placeholder="كلمة المرور">
+                    <input type="password" class="input" style="direction: rtl;font-family: 'Tajawal', sans-serif;" id="password" name="password" placeholder="كلمة المرور"  required>
 
                 </div>
 
                 <div class="login-form-btn-container">
-                    <button type="submit" class="login-form-btn">دخول</button>
+                    <button type="submit" class="login-form-btn" style="font-family: 'Tajawal', sans-serif;">دخول</button>
                 </div>
 
               
 
                 <div class="text-center p-t-2">
-                    <a asp-controller="Home" asp-action="Index" method="post" class="txt2">Back to Home <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a asp-controller="Home" asp-action="Index" method="post" class="txt2">العودة للصفحة الرئيسية <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 
                 </div>
 

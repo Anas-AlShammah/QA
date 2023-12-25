@@ -32,7 +32,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
 });
 var app = builder.Build();
-UpdateDatabase(app.Services);
+//UpdateDatabase(app.Services);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -54,13 +54,13 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=login}/{id?}");
 
 app.Run();
-static void UpdateDatabase(IServiceProvider services)
-{
-    using (var serviceScope = services.CreateScope())
-    {
-        using (var db = serviceScope.ServiceProvider.GetService<AppDbContext>())
-        {
-            db.Database.Migrate();
-        }
-    }
-}
+//static void UpdateDatabase(IServiceProvider services)
+//{
+//    using (var serviceScope = services.CreateScope())
+//    {
+//        using (var db = serviceScope.ServiceProvider.GetService<AppDbContext>())
+//        {
+//            db.Database.Migrate();
+//        }
+//    }
+//}
